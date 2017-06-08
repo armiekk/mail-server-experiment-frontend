@@ -6,28 +6,16 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class MailService {
 
+  basePath: string = '/api/mail';
+
   constructor(
     protected http: Http
   ) { }
 
   sendMail(mailPayload: any) {
-    // const body = new URLSearchParams();
-    // Object.keys(mailPayload).map((key: string) => body.set(key, mailPayload[key]));
-    // const requestHeaders: Headers = new Headers();
-    // requestHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
-    // const requestOptions: RequestOptionsArgs = {
-    //   headers: requestHeaders,
-    // }
-    // console.log(body.toString());
-    // return this.http.post(`/sendMail`, body.toString(), requestOptions)
-    //   .map((response: Response) => response.json())
-    //   .catch((err) => {
-    //     console.log(err);
-    //     return Observable.of();
-    //   });
     const body = new FormData();
     Object.keys(mailPayload).map((key: string) => body.append(key, mailPayload[key]));
-    return Observable.from(axios.post('/sendMail', body, {
+    return Observable.from(axios.post(`${this.basePath}/sendMail`, body, {
       proxy: {
         host: 'http://localhost',
         port: 3000

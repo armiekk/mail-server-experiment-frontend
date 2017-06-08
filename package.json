@@ -23,6 +23,9 @@
     "@angular/router": "^4.0.0",
     "axios": "^0.16.2",
     "core-js": "^2.4.1",
+    "jquery": "^3.2.1",
+    "jquery-circle-progress": "^1.2.2",
+    "radial-progress-chart": "0.0.4",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
